@@ -1019,23 +1019,27 @@ var frequencies = [
 	"+1",
 	"-11",
 	"+8",
-	"-121858",
-]
+	"-121858"
+];
 
-frequencies.reduce((sum, val) => sum + Number(val), 0) //?
+frequencies.reduce((sum, val) => sum + Number(val), 0); //?
 
-var getFrequency = function (array) {
-	var prev = {}
-	var sumTotal = 0
-	while (true) {
+var getFrequency = function(array) {
+	var prev = {};
+	var sumTotal = 0;
+	var maxSearches = 10000;
+	var loopCounter = 1;
+	while (loopCounter < maxSearches) {
+		loopCounter++;
 		for (var val of array) {
-			sumTotal += Number(val)
+			sumTotal += Number(val);
 			if (prev[sumTotal]) {
-				return sumTotal
+				console.log(loopCounter);
+				return sumTotal;
 			} else {
-				prev[sumTotal] = true
+				prev[sumTotal] = true;
 			}
 		}
 	}
-}
-getFrequency(frequencies) //?
+};
+getFrequency(frequencies); //?
