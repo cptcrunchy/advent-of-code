@@ -1027,14 +1027,14 @@ frequencies.reduce((sum, val) => sum + Number(val), 0); //?
 var getFrequency = function(array) {
 	var prev = {};
 	var sumTotal = 0;
-	var maxSearches = 10000;
+	var maxSearches = 1000;
 	var loopCounter = 1;
 	while (loopCounter < maxSearches) {
 		loopCounter++;
 		for (var val of array) {
 			sumTotal += Number(val);
+			prev[sumTotal]; //?
 			if (prev[sumTotal]) {
-				console.log(loopCounter);
 				return sumTotal;
 			} else {
 				prev[sumTotal] = true;
@@ -1042,4 +1042,5 @@ var getFrequency = function(array) {
 		}
 	}
 };
+
 getFrequency(frequencies); //?
