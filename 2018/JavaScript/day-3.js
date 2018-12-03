@@ -1408,7 +1408,31 @@ var mapSantaFabric = function (matrix) {
             }
         }
     }
-    return Object.values(grid).filter(val => val > 1).length
+    return Object.values(grid).filter(areas => areas > 1).length
+}
+
+var findUniqueClaim = function (matrix) {
+    var grid = Object.create(null)
+    var claims = Object.create(null)
+
+    for (var line of matrix) {
+        var [claimID, at, location, dimensions] = line.split(' ')
+        var [row, col] = location.slice(0, -1).split(',').map(x => Number(x))
+        var [rowWidth, colHeight] = dimensions.split('x').map(x => Number(x));
+        claims[claimID] = true
+
+        for (let x = row; x < row + rowWidth; x++) {
+            for (let y = col; y < col + colHeight; y++) {
+                if (grid[`${x},${y}`]) {
+                    claims[grid[`${x},${y}`]] = false
+                    claims[claimID] = false
+                }
+                grid[`${x},${y}`] = claimID;
+            }
+        }
+    }
+    return Object.entries(claims).filter(claim => claim[1])//?
 }
 
 mapSantaFabric(inputData)//?
+findUniqueClaim(inputData)//?
