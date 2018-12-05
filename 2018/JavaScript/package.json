@@ -1,0 +1,12 @@
+{
+  "name": "advent-of-code-js-2018",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "cpt-crunchy",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "mz": "^2.7.0",
+    "nodemon": "^1.18.7"
+  }
+}
